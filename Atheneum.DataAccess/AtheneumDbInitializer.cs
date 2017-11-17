@@ -1,14 +1,21 @@
 ﻿using Atheneum.DataAccess.Models;
-using System.Data.Entity;
 using Atheneum.DataAccess.Enums;
 using System;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Atheneum.DataAccess
 {
-    class AtheneumDbInitializer : DropCreateDatabaseAlways<AtheneumContext>
+    public class AtheneumDbInitializer 
     {
-        protected override void Seed(AtheneumContext context)
+        public static void Initialize(AtheneumContext context)
         {
+            context.Database.EnsureCreated();
+
+            if (context.Books.Any())
+            {
+                return;   
+            }
             context.Books.Add(new Book { Name = "Война и мир", Author = "Л. Толстой", Publisher = "veselka", IncludeToFile = true, YearOfPublishing = DateTime.Now, LibraryType = LibraryType.Book });
             context.Books.Add(new Book { Name = "Отцы и дети", Author = "И. Тургенев", Publisher = "veselka", IncludeToFile = false, YearOfPublishing = DateTime.Now, LibraryType = LibraryType.Book });
             context.Books.Add(new Book { Name = "Чайка", Author = "А. Чехов", Publisher = "veselka", IncludeToFile = false, YearOfPublishing = DateTime.Now, LibraryType = LibraryType.Book });
@@ -26,7 +33,9 @@ namespace Atheneum.DataAccess
             context.Periodicals.Add(new Periodical { Name = "4sdstrjfg", Publisher = "aesrtjrg", IncludeToFile = false, YearOfPublishing = DateTime.Now, LibraryType = LibraryType.Periodical });
             context.Periodicals.Add(new Periodical { Name = "5sstrjdfg", Publisher = "aaherahg", IncludeToFile = true, YearOfPublishing = DateTime.Now, LibraryType = LibraryType.Periodical });
 
-            base.Seed(context);
+            context.SaveChanges();
+
+
         }
     }
 }
