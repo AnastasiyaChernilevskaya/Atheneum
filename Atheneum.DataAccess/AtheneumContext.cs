@@ -2,28 +2,29 @@
 using Atheneum.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
+
 
 namespace Atheneum.DataAccess
 {
     public class AtheneumContext : DbContext
     {
-        public AtheneumContext() : base()
-        {
-        }
+        private IConfigurationRoot _configuration;
+
+        public AtheneumContext(IConfigurationRoot configuration, DbContextOptions options): base(options)
+            {
+                _configuration = configuration;
+            }
 
         public DbSet<Book> Books { get; set; }
         public DbSet<Periodical> Periodicals { get; set; }
         public DbSet<Newspaper> Newspapers { get; set; }
 
-        public static AtheneumContext Create()
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            return new AtheneumContext();
-        }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Book>().ToTable("Book");
-            modelBuilder.Entity<Periodical>().ToTable("Periodical");
-            modelBuilder.Entity<Newspaper>().ToTable("Newspaper");
+            base.OnConfiguring(optionsBuilder);
+
+            optionsBuilder.UseSqlServer(_configuration["ConnectionStrings:DefaultConnection"]);
         }
 
     }

@@ -5,27 +5,34 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Atheneum.DataAccess;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace Atheneum
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private IConfigurationRoot _configuration;
+
+        public Startup(IHostingEnvironment environment)
         {
-            Configuration = configuration;
+            var ConfigBuilder = new ConfigurationBuilder().SetBasePath(environment.ContentRootPath)
+                        .AddJsonFile("appsettings.json");
+            _configuration = ConfigBuilder.Build();
         }
 
         public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton(_configuration);
+            var connectionString = _configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<AtheneumContext>(options =>
-               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+               options.UseSqlServer(connectionString));
+            services.AddTransient<AtheneumDbInitializer>();
             services.AddMvc();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, AtheneumDbInitializer seeder)
         {
             if (env.IsDevelopment())
             {
@@ -52,6 +59,21 @@ namespace Atheneum
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
             });
+
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync(" Welcome to Dotnet Core !!");
+            });
+
+            try
+            {
+                seeder.SeedData().Wait();
+            }
+            catch (System.Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }
