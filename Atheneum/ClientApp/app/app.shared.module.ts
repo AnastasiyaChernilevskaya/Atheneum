@@ -6,17 +6,19 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
-import { HomeComponent } from './components/home/home.component';
+//import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
-import { CounterComponent } from './components/counter/counter.component';
+//import { CounterComponent } from './components/counter/counter.component';
+import { MainGridComponent } from './components/maingri/maingrid.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         NavMenuComponent,
-        CounterComponent,
+        //CounterComponent,
         FetchDataComponent,
-        HomeComponent
+        //HomeComponent,
+        MainGridComponent
     ],
     imports: [
         CommonModule,
@@ -24,9 +26,10 @@ import { CounterComponent } from './components/counter/counter.component';
         FormsModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'home', component: HomeComponent },
-            { path: 'counter', component: CounterComponent },
+            //{ path: 'home', component: HomeComponent },
+            //{ path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
+            { path: 'MainGrid', component: MainGridComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]
