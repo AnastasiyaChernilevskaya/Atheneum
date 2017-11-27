@@ -28,8 +28,7 @@ namespace Atheneum.Controllers
         [Route("Book")]
         public IEnumerable<Book> GetBooks()
         {
-            return _context.Books;
-
+            return _context.Books.ToList();
         }
 
 
@@ -38,7 +37,6 @@ namespace Atheneum.Controllers
         public IEnumerable<Newspaper> GetNewspapers()
         {
             return _context.Newspapers;
-
         }
 
         [HttpGet]
@@ -46,12 +44,9 @@ namespace Atheneum.Controllers
         public IEnumerable<Periodical> GetPeriodicals()
         {
             return _context.Periodicals;
-
         }
 
-        //// For Student Detail with studentid to load by student ID
 
-        //// GET api/values/5
         //[HttpGet]
         //[Route("Details/{id}")]
         //public IEnumerable<StudentDetails> GetStudentDetails(int id)

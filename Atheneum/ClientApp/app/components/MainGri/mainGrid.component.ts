@@ -19,6 +19,12 @@ export class MainGridComponent {
         this.fieldArray.splice(index, 1);
     }
 
+    //addEntitysToArray() {
+    //    this.fieldArray.push(
+            
+    //    });
+    //}
+
     public Atheneum: Entity[] = [];
 
     public Book: Entity[] = [];
@@ -42,8 +48,10 @@ export class MainGridComponent {
 
         this.http.get('/api/MainGridAPI/Book').subscribe(result => {
             this.Book = result.json();
+
         });
     }
+    //JSON.stringify{
 
     getNewspapersData() {
 
@@ -60,11 +68,11 @@ export class MainGridComponent {
     }
 }
 
-
 export interface Entity {
     ID: string;
     IncludeToFile: boolean;
     Name: string;
     Publisher: string;
     LibraryType: string;
+    Author: string;
 }

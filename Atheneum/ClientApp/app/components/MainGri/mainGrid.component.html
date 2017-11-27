@@ -14,19 +14,19 @@
     <tbody>
         <tr *ngFor="let field of Book; let i = index; let field of fieldArray">
             <td class="hidden">
-                <input [(ngModel)]="field.Id" class="form-control" type="hidden" name="{{field.Id}}" value = "{{field.Id}}" />
+                <input [(ngModel)]="field.id" class="form-control" type="hidden" value = "{{field.id}}" />
+            </td>
+            <!--<td>
+                <input [(ngModel)]="field.IncludeToFile" class="form-control" type="checkbox" value ="{{fieled.includeToFile}}" />
+            </td>-->
+            <td>
+                <input [(ngModel)]="field.libraryType" class="form-control" type="text" value = "{{fieled.libraryType}}"/>
             </td>
             <td>
-                <input [(ngModel)]="field.IncludeToFile" class="form-control" type="checkbox" name="{{field.IncludeToFile}}" value ="{{fieled.IncludeToFile}}" />
+                <input [(ngModel)]="field.name" class="form-control" type="text" value ="{{field.name}}" />
             </td>
             <td>
-                <input [(ngModel)]="field.LibraryType" class="form-control" type="text" name="{{field.LibraryType}}" value = "{{fieled.LibraryType}}"/>
-            </td>
-            <td>
-                <input [(ngModel)]="field.Name" class="form-control" type="text" name="{{field.Name}}" value ="{{field.Name}}" />
-            </td>
-            <td>
-                <input [(ngModel)]="field.Publisher" class="form-control" type="text" name="{{field.Publisher}}" value ="{{field.Publisher}}" />
+                <input [(ngModel)]="field.publisher" class="form-control" type="text" value ="{{field.publisher}}" />
             </td>
             <td>
                 <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
