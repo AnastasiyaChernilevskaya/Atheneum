@@ -6,10 +6,13 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
-//import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
-import { MainGridComponent } from './components/maingri/maingrid.component';
+
+import { MainGridComponent } from './components/maingrid/maingrid.component';
+import { BooksGridComponent } from './components/booksgrid/booksGrid.component';
+
 
 @NgModule({
     declarations: [
@@ -18,7 +21,8 @@ import { MainGridComponent } from './components/maingri/maingrid.component';
         CounterComponent,
         FetchDataComponent,
         //HomeComponent,
-        MainGridComponent
+        MainGridComponent,
+        BooksGridComponent
     ],
     imports: [
         CommonModule,
@@ -30,6 +34,7 @@ import { MainGridComponent } from './components/maingri/maingrid.component';
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'MainGrid', component: MainGridComponent },
+            { path: 'BooksGrid', component: BooksGridComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]

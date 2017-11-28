@@ -9,8 +9,8 @@ using Atheneum.DataAccess.Models;
 namespace Atheneum.Controllers
 {
 [Produces("application/json")]
-    [Route("api/MainGridAPI")]
-    public class MainGridAPI : Controller
+    [Route("api/BooksGridAPI")]
+    public class BooksGridAPI : Controller
     {
         public IActionResult Index()
         {
@@ -19,22 +19,25 @@ namespace Atheneum.Controllers
         
         private readonly AtheneumContext _context;
 
-        public MainGridAPI(AtheneumContext context)
+        public BooksGridAPI(AtheneumContext context)
         {
             _context = context;
         }
 
         [HttpGet]
-        [Route("Atheneum")]
-        public IEnumerable<BaseEntity> GetEntitys()
+        [Route("Books")]
+        public IEnumerable<Book> GetBooks()
         {
-            var result = new List<BaseEntity>();
+            return _context.Books;
+        }
 
-            result.AddRange(_context.Books);
-            result.AddRange(_context.Newspapers);
-            result.AddRange(_context.Periodicals);
-
-            return result;
+        [HttpGet]
+        [Route("Destroy/{id}")]
+        public void DestroyLibraryItem(string id)
+        {
+            var book = _context.Books.ToList().FirstOrDefault(p => p.Id == id);
+            _context.Books.Remove(book);
+            _context.SaveChanges();
         }
 
         //[HttpGet]

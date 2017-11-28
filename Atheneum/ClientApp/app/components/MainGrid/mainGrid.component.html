@@ -1,0 +1,56 @@
+<h1>Main Grid</h1>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th class="hidden">Id</th>
+            <th>IncludeToFile</th>
+            <th>LibraryType</th>
+            <th>Name</th>
+            <th>Publisher</th>
+            <th>Command</th>
+        </tr>
+    </thead>    
+    <tbody>
+        <tr *ngFor="let Entity of Atheneum; let i = index">
+            <td class="hidden">
+                <input [(ngModel)]="Entity.id" class="form-control" type="hidden" value = "{{Entity.id}}" />
+            </td>
+            <td>
+                <input [(ngModel)]="Entity.includeToFile" class="form-control" type="checkbox" value ="{{Entity.includeToFile}}" />
+            </td>
+            <td>
+                <input [(ngModel)]="Entity.libraryType" class="form-control" type="text" value = "{{Entity.libraryType}}"/>
+            </td>
+            <td>
+                <input [(ngModel)]="Entity.name" class="form-control" type="text" value ="{{Entity.name}}" />
+            </td>
+            <td>
+                <input [(ngModel)]="Entity.publisher" class="form-control" type="text" value ="{{Entity.publisher}}" />
+            </td>
+            <td>
+                <button class="btn btn-default" type="button" (click)="deleteFieldValue(i , {{Entity.id}})">Delete</button>
+            </td>
+        </tr>
+        <tr>
+            <td class="hidden">
+                <input class="form-control" type="hidden" id="newAttributeId" [(ngModel)]="newAttribute.id" name="newAttributeId" />
+            </td>
+            <td>
+                <input class="form-control" type="checkbox" id="newAttributeIncludeToFile" [(ngModel)]="newAttribute.includeToFile" name="newAttributeIncludeToFile" />
+            </td>
+            <td>
+                <input class="form-control" type="text" id="newAttributeLibraryType" [(ngModel)]="newAttribute.libraryType" name="newAttributeLibraryType" />
+            </td>
+            <td>
+                <input class="form-control" type="text" id="newAttributeName" [(ngModel)]="newAttribute.name" name="newAttributeName" />
+            </td>
+            <td>
+                <input class="form-control" type="text" id="newAttributePublisher" [(ngModel)]="newAttribute.publisher" name="newAttributePublisher" />
+            </td>
+            <td>
+                <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -6,27 +6,31 @@
             <th class="hidden">Id</th>
             <th>IncludeToFile</th>
             <th>LibraryType</th>
+            <th>Author</th>
             <th>Name</th>
             <th>Publisher</th>
             <th>Command</th>
         </tr>
     </thead>    
     <tbody>
-        <tr *ngFor="let field of fieldArray; let i = index">
+        <tr *ngFor="let Book of Books; let i = index">
             <td class="hidden">
-                <input [(ngModel)]="field.id" class="form-control" type="hidden" value = "{{field.id}}" />
+                <input [(ngModel)]="Book.id" class="form-control" type="hidden" value = "{{Book.id}}" />
             </td>
             <td>
-                <input [(ngModel)]="field.includeToFile" class="form-control" type="checkbox" value ="{{fieled.includeToFile}}" />
+                <input [(ngModel)]="Book.includeToFile" class="form-control" type="checkbox" value ="{{Book.includeToFile}}" />
             </td>
             <td>
-                <input [(ngModel)]="field.libraryType" class="form-control" type="text" value = "{{fieled.libraryType}}"/>
+                <input [(ngModel)]="Book.libraryType" class="form-control" type="text" value = "{{Book.libraryType}}"/>
             </td>
             <td>
-                <input [(ngModel)]="field.name" class="form-control" type="text" value ="{{field.name}}" />
+                <input [(ngModel)]="Book.author" class="form-control" type="text" value="{{Book.author}}" />
             </td>
             <td>
-                <input [(ngModel)]="field.publisher" class="form-control" type="text" value ="{{field.publisher}}" />
+                <input [(ngModel)]="Book.name" class="form-control" type="text" value ="{{Book.name}}" />
+            </td>
+            <td>
+                <input [(ngModel)]="Book.publisher" class="form-control" type="text" value ="{{Book.publisher}}" />
             </td>
             <td>
                 <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
@@ -41,6 +45,9 @@
             </td>
             <td>
                 <input class="form-control" type="text" id="newAttributeLibraryType" [(ngModel)]="newAttribute.libraryType" name="newAttributeLibraryType" />
+            </td>
+            <td>
+                <input class="form-control" type="text" id="newAttributeAuthor" [(ngModel)]="newAttribute.author" name="newAttributeAuthor" />
             </td>
             <td>
                 <input class="form-control" type="text" id="newAttributeName" [(ngModel)]="newAttribute.name" name="newAttributeName" />
