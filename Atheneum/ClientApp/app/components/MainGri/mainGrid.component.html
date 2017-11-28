@@ -12,13 +12,13 @@
         </tr>
     </thead>    
     <tbody>
-        <tr *ngFor="let field of Book; let i = index; let field of fieldArray">
+        <tr *ngFor="let field of fieldArray; let i = index">
             <td class="hidden">
                 <input [(ngModel)]="field.id" class="form-control" type="hidden" value = "{{field.id}}" />
             </td>
-            <!--<td>
-                <input [(ngModel)]="field.IncludeToFile" class="form-control" type="checkbox" value ="{{fieled.includeToFile}}" />
-            </td>-->
+            <td>
+                <input [(ngModel)]="field.includeToFile" class="form-control" type="checkbox" value ="{{fieled.includeToFile}}" />
+            </td>
             <td>
                 <input [(ngModel)]="field.libraryType" class="form-control" type="text" value = "{{fieled.libraryType}}"/>
             </td>
@@ -34,19 +34,19 @@
         </tr>
         <tr>
             <td class="hidden">
-                <input class="form-control" type="hidden" id="newAttributeId" [(ngModel)]="newAttribute.Id" name="newAttributeId" />
+                <input class="form-control" type="hidden" id="newAttributeId" [(ngModel)]="newAttribute.id" name="newAttributeId" />
             </td>
             <td>
-                <input class="form-control" type="checkbox" id="newAttributeIncludeToFile" [(ngModel)]="newAttribute.IncludeToFile" name="newAttributeIncludeToFile" />
+                <input class="form-control" type="checkbox" id="newAttributeIncludeToFile" [(ngModel)]="newAttribute.includeToFile" name="newAttributeIncludeToFile" />
             </td>
             <td>
-                <input class="form-control" type="text" id="newAttributeLibraryType" [(ngModel)]="newAttribute.LibraryType" name="newAttributeLibraryType" />
+                <input class="form-control" type="text" id="newAttributeLibraryType" [(ngModel)]="newAttribute.libraryType" name="newAttributeLibraryType" />
             </td>
             <td>
                 <input class="form-control" type="text" id="newAttributeName" [(ngModel)]="newAttribute.name" name="newAttributeName" />
             </td>
             <td>
-                <input class="form-control" type="text" id="newAttributePublisher" [(ngModel)]="newAttribute.Publisher" name="newAttributePublisher" />
+                <input class="form-control" type="text" id="newAttributePublisher" [(ngModel)]="newAttribute.publisher" name="newAttributePublisher" />
             </td>
             <td>
                 <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>

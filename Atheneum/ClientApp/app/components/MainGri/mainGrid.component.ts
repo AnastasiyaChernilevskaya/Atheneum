@@ -17,13 +17,7 @@ export class MainGridComponent {
 
     deleteFieldValue(index: number) {
         this.fieldArray.splice(index, 1);
-    }
-
-    //addEntitysToArray() {
-    //    this.fieldArray.push(
-            
-    //    });
-    //}
+    }   
 
     public Atheneum: Entity[] = [];
 
@@ -38,6 +32,8 @@ export class MainGridComponent {
         //this.getPeriodicalData();
     }
 
+
+
     //getAtheneumData() {
     //    this.getBooksData();
     //    this.getNewspapersData();
@@ -48,24 +44,33 @@ export class MainGridComponent {
 
         this.http.get('/api/MainGridAPI/Book').subscribe(result => {
             this.Book = result.json();
-
         });
     }
+
+    ngOnInit() {
+        this.addEntitysToArray();
+    }
+
+    addEntitysToArray() {
+        for (var item of this.Book) {
+            this.fieldArray.push(item)
+        }
+    };
     //JSON.stringify{
 
-    getNewspapersData() {
+    //getNewspapersData() {
 
-        this.http.get('/api/MainGridAPI/Newspaper').subscribe(result => {
-            this.Book = result.json();
-        });
-    }
+    //    this.http.get('/api/MainGridAPI/Newspaper').subscribe(result => {
+    //        this.Book = result.json();
+    //    });
+    //}
 
-    getPeriodicalData() {
+    //getPeriodicalData() {
 
-        this.http.get('/api/MainGridAPI/Periodical').subscribe(result => {
-            this.Book = result.json();
-        });
-    }
+    //    this.http.get('/api/MainGridAPI/Periodical').subscribe(result => {
+    //        this.Book = result.json();
+    //    });
+    //}
 }
 
 export interface Entity {
