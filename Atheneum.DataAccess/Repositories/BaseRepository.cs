@@ -10,7 +10,5 @@ namespace Atheneum.DataAccess.Repositories
     public class BaseRepository
     {
         protected string _connectionString;
-
-
     }
 }

@@ -32,7 +32,7 @@ export class BooksGridComponent {
         });
     }
 
-    destroyBook(id) {
+    destroyBook(id: string) {
         this.http.get('/api/BooksGridAPI/Destroy/' + id).subscribe(result => {
             this.Books = result.json();
         });

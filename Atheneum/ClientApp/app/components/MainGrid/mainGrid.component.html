@@ -14,42 +14,42 @@
     <tbody>
         <tr *ngFor="let Entity of Atheneum; let i = index">
             <td class="hidden">
-                <input [(ngModel)]="Entity.id" class="form-control" type="hidden" value = "{{Entity.id}}" />
+                <input [(ngModel)]="Entity.id" class="form-control" LibraryType="hidden" value = "{{Entity.id}}" />
             </td>
             <td>
-                <input [(ngModel)]="Entity.includeToFile" class="form-control" type="checkbox" value ="{{Entity.includeToFile}}" />
+                <input [(ngModel)]="Entity.includeToFile" class="form-control" LibraryType="checkbox" value ="{{Entity.includeToFile}}" />
             </td>
             <td>
-                <input [(ngModel)]="Entity.libraryType" class="form-control" type="text" value = "{{Entity.libraryType}}"/>
+                <input [(ngModel)]="Entity.LibraryType" class="form-control" LibraryType="text" value = "{{Entity.LibraryType}}"/>
             </td>
             <td>
-                <input [(ngModel)]="Entity.name" class="form-control" type="text" value ="{{Entity.name}}" />
+                <input [(ngModel)]="Entity.name" class="form-control" LibraryType="text" value ="{{Entity.name}}" />
             </td>
             <td>
-                <input [(ngModel)]="Entity.publisher" class="form-control" type="text" value ="{{Entity.publisher}}" />
+                <input [(ngModel)]="Entity.publisher" class="form-control" LibraryType="text" value ="{{Entity.publisher}}" />
             </td>
             <td>
-                <button class="btn btn-default" type="button" (click)="deleteFieldValue(i , {{Entity.id}})">Delete</button>
+                <button class="btn btn-default" LibraryType="button" (click)="deleteFieldValue(i , {{Entity.id}})">Delete</button>
             </td>
         </tr>
         <tr>
             <td class="hidden">
-                <input class="form-control" type="hidden" id="newAttributeId" [(ngModel)]="newAttribute.id" name="newAttributeId" />
+                <input class="form-control" LibraryType="hidden" id="newAttributeId" [(ngModel)]="newAttribute.id" name="newAttributeId" />
             </td>
             <td>
-                <input class="form-control" type="checkbox" id="newAttributeIncludeToFile" [(ngModel)]="newAttribute.includeToFile" name="newAttributeIncludeToFile" />
+                <input class="form-control" LibraryType="checkbox" id="newAttributeIncludeToFile" [(ngModel)]="newAttribute.includeToFile" name="newAttributeIncludeToFile" />
             </td>
             <td>
-                <input class="form-control" type="text" id="newAttributeLibraryType" [(ngModel)]="newAttribute.libraryType" name="newAttributeLibraryType" />
+                <input class="form-control" LibraryType="text" id="newAttributeLibraryType" [(ngModel)]="newAttribute.LibraryType" name="newAttributeLibraryType" />
             </td>
             <td>
-                <input class="form-control" type="text" id="newAttributeName" [(ngModel)]="newAttribute.name" name="newAttributeName" />
+                <input class="form-control" LibraryType="text" id="newAttributeName" [(ngModel)]="newAttribute.name" name="newAttributeName" />
             </td>
             <td>
-                <input class="form-control" type="text" id="newAttributePublisher" [(ngModel)]="newAttribute.publisher" name="newAttributePublisher" />
+                <input class="form-control" LibraryType="text" id="newAttributePublisher" [(ngModel)]="newAttribute.publisher" name="newAttributePublisher" />
             </td>
             <td>
-                <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
+                <button class="btn btn-default" LibraryType="button" (click)="addFieldValue()">Add</button>
             </td>
         </tr>
     </tbody>

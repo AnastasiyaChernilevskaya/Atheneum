@@ -35,7 +35,7 @@ namespace Atheneum.Controllers
         [Route("Destroy/{id}")]
         public void DestroyLibraryItem(string id)
         {
-            var book = _context.Books.ToList().FirstOrDefault(p => p.Id == id);
+            var book = _context.Books.ToList().FirstOrDefault(p => p.id == id);
             _context.Books.Remove(book);
             _context.SaveChanges();
         }
