@@ -10,9 +10,9 @@ namespace Atheneum.DataAccess.Models
 
         [Key]
         [Required]
-        public String id
+        public String Id
         {
-            get => id ?? (id = Guid.NewGuid().ToString());
+            get => Id ?? (id = Guid.NewGuid().ToString());
             set => id = value;
         }
 

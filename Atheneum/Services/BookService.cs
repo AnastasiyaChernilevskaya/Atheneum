@@ -5,15 +5,19 @@ using System.Xml.Serialization;
 using System.IO;
 using Atheneum.DataAccess.Models;
 using Atheneum.DataAccess.Repositories;
+using Atheneum.DataAccess;
 
 namespace Atheneum.Services
 {
     public class BookService
     {
         private BookRepository _bookRepository;
-        public BookService()
+        private readonly AtheneumContext _context;
+
+        public BookService(AtheneumContext context)
         {
-            _bookRepository = new BookRepository();
+            _context = context;
+            _bookRepository = new BookRepository(_context);
         }
 
         public IList<Book> GetBooks()

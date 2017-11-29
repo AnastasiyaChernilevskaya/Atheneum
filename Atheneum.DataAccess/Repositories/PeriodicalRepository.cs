@@ -10,11 +10,11 @@ namespace Atheneum.DataAccess.Repositories
 {
     public class PeriodicalRepository
     {
-        private AtheneumContext _context;
+        private readonly AtheneumContext _context;
 
-        public PeriodicalRepository()
+        public PeriodicalRepository(AtheneumContext context)
         {
-            _context = new AtheneumContext();
+            _context = context;
         }
 
         public List<Periodical> GetPeriodicals()
@@ -43,7 +43,7 @@ namespace Atheneum.DataAccess.Repositories
 
         public void UpdatePeriodical(Periodical periodical)
         {
-            var entity = GetPeriodical(periodical.id);
+            var entity = GetPeriodical(periodical.Id);
 
             entity.IncludeToFile = periodical.IncludeToFile;
             entity.Name = periodical.Name;
@@ -62,7 +62,7 @@ namespace Atheneum.DataAccess.Repositories
 
         public Periodical GetPeriodical(string id)
         {
-            return GetPeriodicals().FirstOrDefault(p => p.id == id);
+            return GetPeriodicals().FirstOrDefault(p => p.Id == id);
         }
         public List<Periodical> GetCheckedPeriodicals()
         {

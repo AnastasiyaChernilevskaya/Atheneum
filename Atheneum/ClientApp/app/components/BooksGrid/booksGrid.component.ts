@@ -14,7 +14,7 @@ export class BooksGridComponent {
         this.newAttribute = {};
     }
 
-    deleteFieldValue(index: number, id: string) {
+    deleteBook(index: number, id: string) {
         this.Books.splice(index, 1);
         this.destroyBook(id);
     }
@@ -47,5 +47,4 @@ export interface Book {
     Publisher: string;
     LibraryType: LibraryType;
     Author: string;
-    Date: string;
 }

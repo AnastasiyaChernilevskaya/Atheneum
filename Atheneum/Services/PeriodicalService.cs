@@ -3,15 +3,19 @@ using System.IO;
 using System.Xml.Serialization;
 using Atheneum.DataAccess.Models;
 using Atheneum.DataAccess.Repositories;
+using Atheneum.DataAccess;
 
 namespace Atheneum.Services
 {
     public class PeriodicalService
     {
         private PeriodicalRepository _periodicalRepository;
-        public PeriodicalService()
+        private readonly AtheneumContext _context;
+
+        public PeriodicalService(AtheneumContext context)
         {
-            _periodicalRepository = new PeriodicalRepository();
+            _context = context;
+            _periodicalRepository = new PeriodicalRepository(_context);
         }
 
         public List<Periodical> GetPeriodicals()

@@ -5,15 +5,19 @@ using System.IO;
 using Atheneum.DataAccess.Models;
 using Atheneum.DataAccess.Repositories;
 using Atheneum.DataAccess.Enums;
+using Atheneum.DataAccess;
 
 namespace Atheneum.Services
 {
     public class LibraryService
     {
         private LibraryRepository _libraryRepository;
-        public LibraryService()
+        private readonly AtheneumContext _context;
+
+        public LibraryService(AtheneumContext context)
         {
-            _libraryRepository = new LibraryRepository();
+            _context = context;
+            _libraryRepository = new LibraryRepository(_context);
         }
 
         public List<BaseEntity> GetLibrary()
@@ -21,13 +25,14 @@ namespace Atheneum.Services
             return _libraryRepository.GetEntitys();
         }
 
-        public void UpdateLibrary(string id, LibraryType entityLibraryType)
+        public void UpdateLibrary(string id, int entityLibraryType)
         {
             _libraryRepository.UpdateEntityChack(id, entityLibraryType);
         }
 
-        public void DestroyLibraryItem(string id, LibraryType entityLibraryType)
+        public void DestroyLibraryItem(string id, int entityLibraryType)
         {
+
             _libraryRepository.DestroyEntity(id, entityLibraryType);
         }
         public List<BaseEntity> GetChacked()
@@ -37,7 +42,7 @@ namespace Atheneum.Services
 
         public static byte[] SerializeToXml<T>(List<T> items)
         {
-            XmlSerializer ser = new XmlSerializer(items.GetLibraryType());
+            XmlSerializer ser = new XmlSerializer(items.GetType());
             string result = string.Empty;
 
             using (MemoryStream memStream = new MemoryStream())

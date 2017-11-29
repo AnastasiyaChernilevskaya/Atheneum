@@ -5,37 +5,43 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Atheneum.DataAccess;
 using Atheneum.DataAccess.Models;
+using Atheneum.Services;
+using Atheneum.DataAccess.Enums;
 
 namespace Atheneum.Controllers
 {
-[Produces("application/json")]
+    [Produces("application/json")]
     [Route("api/MainGridAPI")]
     public class MainGridAPI : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
-        
+        private LibraryService _libraryService;
         private readonly AtheneumContext _context;
 
         public MainGridAPI(AtheneumContext context)
         {
             _context = context;
+            _libraryService = new LibraryService(_context);
+        }
+
+        public IActionResult Index()
+        {
+            return View();
         }
 
         [HttpGet]
         [Route("Atheneum")]
         public IEnumerable<BaseEntity> GetEntitys()
         {
-            var result = new List<BaseEntity>();
-
-            result.AddRange(_context.Books);
-            result.AddRange(_context.Newspapers);
-            result.AddRange(_context.Periodicals);
-
-            return result;
+            return _libraryService.GetLibrary();
         }
+
+        [HttpGet]
+        [Route("Destroy/{id}/{type}")]
+        public void DestroyLibraryItem(string id, int entityLibraryType)
+        {
+            _libraryService.DestroyLibraryItem(id, entityLibraryType);
+        }
+
 
         //[HttpGet]
         //[Route("Details/{id}")]

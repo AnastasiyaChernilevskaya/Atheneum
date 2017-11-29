@@ -10,11 +10,11 @@ namespace Atheneum.DataAccess.Repositories
 {
     public class NewspaperRepository
     {
-        private AtheneumContext _context;
+        private readonly AtheneumContext _context;
 
-        public NewspaperRepository()
+        public NewspaperRepository(AtheneumContext context)
         {
-            _context = new AtheneumContext();
+            _context = context;
         }
 
         public List<Newspaper> GetNewspapers()
@@ -43,7 +43,7 @@ namespace Atheneum.DataAccess.Repositories
 
         public void UpdateNewspaper(Newspaper newspaper)
         {
-            var entity = GetNewspaper(newspaper.id);
+            var entity = GetNewspaper(newspaper.Id);
 
             entity.IncludeToFile = newspaper.IncludeToFile;
             entity.Name = newspaper.Name;
@@ -62,7 +62,7 @@ namespace Atheneum.DataAccess.Repositories
 
         public Newspaper GetNewspaper(string id)
         {
-            return GetNewspapers().FirstOrDefault(p => p.id == id);
+            return GetNewspapers().FirstOrDefault(p => p.Id == id);
         }
         public List<Newspaper> GetCheckedNewspapers()
         {

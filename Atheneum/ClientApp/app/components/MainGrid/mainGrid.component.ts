@@ -15,9 +15,10 @@ export class MainGridComponent {
         this.newAttribute = {};
     }
 
-    deleteFieldValue(index: number) {
+    deleteFieldValue(index: number, id: string, type: number) {
         this.Atheneum.splice(index, 1);
-    }   
+        //this.destroyAtheneumItem(id, type);
+    }  
 
     public Atheneum: Entity[] = [];
 
@@ -31,11 +32,11 @@ export class MainGridComponent {
         });
     }
 
-    //addEntitysToArray() {
-    //    for (var item of this.Book) {
-    //        this.fieldArray.push(item)
-    //    }
-    //};
+    //destroyAtheneumItem(id: string, type: number) {
+    //    this.http.get('/api/MainGridAPI/Destroy/' + id + '/' + type).subscribe(result => {
+    //        this.Atheneum = result.json();
+    //    });
+    //}
 
 
 }
@@ -48,5 +49,4 @@ export interface Entity {
     Publisher: string;
     LibraryType: LibraryType;
     Author: string;
-    Date: string;
 }

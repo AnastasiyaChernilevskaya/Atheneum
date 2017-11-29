@@ -7,15 +7,19 @@ using System.IO;
 using System.Xml.Serialization;
 using Atheneum.DataAccess.Models;
 using Atheneum.DataAccess.Repositories;
+using Atheneum.DataAccess;
 
 namespace Atheneum.Services
 {
     public class NewspaperService
     {
         private NewspaperRepository _newspaperRepository;
-        public NewspaperService()
+        private readonly AtheneumContext _context;
+
+        public NewspaperService(AtheneumContext context)
         {
-            _newspaperRepository = new NewspaperRepository();
+            _context = context;
+            _newspaperRepository = new NewspaperRepository(_context);
         }
 
         public List<Newspaper> GetNewspapers()

@@ -10,12 +10,11 @@ namespace Atheneum.DataAccess.Repositories
 {
     public class BookRepository
     {
+        private readonly AtheneumContext _context;
 
-        private AtheneumContext _context;
-
-        public BookRepository()
+        public BookRepository(AtheneumContext context)
         {
-            _context = new AtheneumContext();
+            _context = context;
         }
 
         public IList<Book> GetBooks()
@@ -45,7 +44,7 @@ namespace Atheneum.DataAccess.Repositories
 
         public void UpdateBook(Book book)
         {
-            var entity = GetBook(book.id);
+            var entity = GetBook(book.Id);
             entity.IncludeToFile = book.IncludeToFile;
             entity.Name = book.Name;
             entity.Publisher = book.Publisher;
@@ -63,7 +62,7 @@ namespace Atheneum.DataAccess.Repositories
 
         public Book GetBook(string id)
         {
-            return GetBooks().FirstOrDefault(p => p.id == id);
+            return GetBooks().FirstOrDefault(p => p.Id == id);
         }
         public List<Book> GetCheckedBooks()
         {
