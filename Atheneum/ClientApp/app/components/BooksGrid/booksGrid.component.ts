@@ -3,19 +3,19 @@ import { Http } from "@angular/http";
 
 import { Book } from '../domain/interface/libraryentitis';
 import { BookChangingService } from '../services/bookchangingservice';
+import { LibraryType } from "../Domain/Enums/LibraryType";
 
 @Component({
     selector: 'booksGrid',
-    templateUrl: './booksGrid.component.html'
+    templateUrl: './booksGrid.component.html',
+    //providers: [BookChangingService]
 })
 export class BooksGridComponent {
-
     public Books: Book[] = [];
 
     constructor(public http: Http, public bookChangingService: BookChangingService) {
-        //bookChangingService.getBooksData();
-        this.http.get('/api/BooksGridAPI/Get').subscribe(result => {
-            return result.json();
+        this.bookChangingService.getBooksData().subscribe(result => {
+            this.Books = result.json(); 
         });
     }
 
@@ -26,7 +26,8 @@ export class BooksGridComponent {
         includeToFile: false,
         libraryType: 0,
         name: "",
-        publisher: ""
+        publisher: "",
+        isChanged: false
     };
 
     addFieldValue() {
@@ -38,7 +39,8 @@ export class BooksGridComponent {
             //date: new Date().toDateString(),
             includeToFile: false,
             libraryType: 0,
-            publisher: this.newAttribute.publisher
+            publisher: this.newAttribute.publisher,
+            isChanged: false
         }
         this.bookChangingService.addBook(book);
 
@@ -49,7 +51,8 @@ export class BooksGridComponent {
             includeToFile: false,
             libraryType: 0,
             name: "",
-            publisher: ""
+            publisher: "",
+            isChanged: false
         };
     }
 
@@ -57,4 +60,9 @@ export class BooksGridComponent {
         this.Books.splice(index, 1);
         this.bookChangingService.destroyBook(id);
     }
+
+    editFieldValue(book: Book) {
+        this.bookChangingService.editBook(book);
+    }
+
 }

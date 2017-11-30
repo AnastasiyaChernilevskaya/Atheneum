@@ -5,7 +5,6 @@
         <tr>
             <th class="hidden">Id</th>
             <th>IncludeToFile</th>
-            <th>type</th>
             <th>Author</th>
             <th>Name</th>
             <th>Publisher</th>
@@ -15,25 +14,23 @@
     <tbody>
         <tr *ngFor="let Book of Books; let i = index">
             <td class="hidden">
-                <input [(ngModel)]="Book.id" class="form-control" type="hidden" value = "{{Book.id}}" />
+                <input [(ngModel)]="Book.id" (ngModelChange)="Book.isChanged = true;" class="form-control" type="hidden" value = "{{Book.id}}" />
             </td>
             <td>
-                <input [(ngModel)]="Book.includeToFile" class="form-control" type="checkbox" value ="{{Book.includeToFile}}" />
+                <input [(ngModel)]="Book.includeToFile" (ngModelChange)="Book.isChanged = true;" class="form-control" type="checkbox" value ="{{Book.includeToFile}}" />
             </td>
             <td>
-                <input [(ngModel)]="Book.libraryType" class="form-control" type="text" value = "{{Book.libraryType}}"/>
+                <input [(ngModel)]="Book.author" (ngModelChange)="Book.isChanged = true;" class="form-control" type="text" value="{{Book.author}}" />
             </td>
             <td>
-                <input [(ngModel)]="Book.author" class="form-control" type="text" value="{{Book.author}}" />
+                <input [(ngModel)]="Book.name" (ngModelChange)="Book.isChanged = true;" class="form-control" type="text" value ="{{Book.name}}" />
             </td>
             <td>
-                <input [(ngModel)]="Book.name" class="form-control" type="text" value ="{{Book.name}}" />
-            </td>
-            <td>
-                <input [(ngModel)]="Book.publisher" class="form-control" type="text" value ="{{Book.publisher}}" />
+                <input [(ngModel)]="Book.publisher" (ngModelChange)="Book.isChanged = true;" class="form-control" type="text" value ="{{Book.publisher}}" />
             </td>
             <td>
                 <button class="btn btn-default" type="button" (click)="deleteFieldValue(i , Book.id)">Delete</button>
+                <button *ngIf="Book.isChanged" class="btn btn-default" type="button" (click)="editFieldValue(Book); Book.isChanged = false;">Save</button>
             </td>
         </tr>
         <tr>
@@ -42,9 +39,6 @@
             </td>
             <td>
                 <input class="form-control" type="checkbox" id="newAttributeIncludeToFile" [(ngModel)]="newAttribute.includeToFile" name="newAttributeIncludeToFile" />
-            </td>
-            <td>
-                <input class="form-control" type="text" id="newAttributeLibraryType" [(ngModel)]="newAttribute.libraryType" name="newAttributeLibraryType" />
             </td>
             <td>
                 <input class="form-control" type="text" id="newAttributeAuthor" [(ngModel)]="newAttribute.author" name="newAttributeAuthor" />

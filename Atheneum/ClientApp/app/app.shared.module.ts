@@ -12,6 +12,10 @@ import { CounterComponent } from './components/counter/counter.component';
 
 import { MainGridComponent } from './components/maingrid/maingrid.component';
 import { BooksGridComponent } from './components/booksgrid/booksGrid.component';
+import { BookChangingService } from "./components/services/bookchangingservice";
+import { LibraryService } from "./components/Services/libraryService";
+import { PeriodicalService } from "./components/Services/periodicalService";
+import { NewspaperService } from "./components/Services/newspaperService";
 
 
 @NgModule({
@@ -37,7 +41,9 @@ import { BooksGridComponent } from './components/booksgrid/booksGrid.component';
             { path: 'BooksGrid', component: BooksGridComponent },
             { path: '**', redirectTo: 'home' }
         ])
-    ]
+    ],
+    providers: [BookChangingService, LibraryService, PeriodicalService, NewspaperService]
+
 })
 export class AppModuleShared {
 }

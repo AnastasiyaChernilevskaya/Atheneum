@@ -17,7 +17,7 @@ namespace Atheneum.DataAccess.Repositories
             _context = context;
         }
 
-        public List<BaseEntity> GetEntitys()
+        public List<BaseEntity> GetEntities()
         {
             var result = new List<BaseEntity>();
 
@@ -28,36 +28,42 @@ namespace Atheneum.DataAccess.Repositories
             return result;
         }
 
-        public void UpdateEntityChack(string id, int entityLibraryType)
+        public void UpdateEntityChack(BaseEntity baseEntity)
         {
-            var entity = GetEntitys().Where(x => x.Id == id).FirstOrDefault();
-            if (entityLibraryType == (int)LibraryType.Book)
+            var id = baseEntity.Id;
+            if (baseEntity.LibraryType == LibraryType.Book)
             {
                 var _repository = new BookRepository(_context);
                 var book = _repository.GetBook(id);
-                book.IncludeToFile = !book.IncludeToFile;
+                book.Name = baseEntity.Name;
+                book.Publisher = baseEntity.Publisher;
+                book.IncludeToFile = baseEntity.IncludeToFile;
                 if (book != null)
                 {
                     _repository.UpdateBook(book);
                 }
                 return;
             }
-            if (entityLibraryType == (int)LibraryType.Newspaper)
+            if (baseEntity.LibraryType == LibraryType.Newspaper)
             {
                 var _repository = new NewspaperRepository(_context);
                 var newspaper = _repository.GetNewspaper(id);
-                newspaper.IncludeToFile = !newspaper.IncludeToFile;
+                newspaper.Name = baseEntity.Name;
+                newspaper.Publisher = baseEntity.Publisher;
+                newspaper.IncludeToFile = baseEntity.IncludeToFile;
                 if (newspaper != null)
                 {
                     _repository.UpdateNewspaper(newspaper);
                 }
                 return;
             }
-            if (entityLibraryType == (int)LibraryType.Periodical)
+            if (baseEntity.LibraryType == LibraryType.Periodical)
             {
                 var _repository = new PeriodicalRepository(_context);
                 var periodical = _repository.GetPeriodical(id);
-                periodical.IncludeToFile = periodical.IncludeToFile;
+                periodical.Name = baseEntity.Name;
+                periodical.Publisher = baseEntity.Publisher;
+                periodical.IncludeToFile = baseEntity.IncludeToFile;
                 if (periodical != null)
                 {
                     _repository.UpdatePeriodical(periodical);
@@ -107,7 +113,7 @@ namespace Atheneum.DataAccess.Repositories
         public List<BaseEntity> GetCheckedEntitys()
         {
             var result = new List<BaseEntity>();
-            foreach (BaseEntity entity in GetEntitys())
+            foreach (BaseEntity entity in GetEntities())
             {
                 if (entity.IncludeToFile)
                 {

@@ -1,22 +1,20 @@
 ﻿import { Component, Injectable } from '@angular/core';
 import { Http } from "@angular/http";
-import { Book } from '../domain/interface/libraryentitis';
+import { Entity } from '../domain/interface/libraryentitis';
 import { LibraryType } from "../Domain/Enums/LibraryType";
 @Injectable()
-export class BookChangingService {
+export class NewspaperService {
     LibraryType: LibraryType;
     constructor(public http: Http) {
 
     }
 
-    getBooksData() {
-        return this.http.get('/api/BooksGridAPI/Get')
-        //    .subscribe(result => {
-        //});
+    getData() {
+        return this.http.get('/api/MainGridAPI/Get');
     }
 
-    addBook(book: Book) {
-        this.http.post('/api/BooksGridAPI/Add/', book).subscribe(
+    addEntity(entity: Entity) {
+        this.http.post('/api/MainGridAPI/Add/', entity).subscribe(
             res => {
                 console.log(res);
             },
@@ -26,8 +24,8 @@ export class BookChangingService {
         );
     }
 
-    editBook(book: Book) {
-        this.http.post('/api/BooksGridAPI/Edit/', book).subscribe(
+    editEntity(entity: Entity) {
+        this.http.post('/api/MainGridAPI/Edit/', entity).subscribe(
             res => {
                 console.log(res);
             },
@@ -37,8 +35,8 @@ export class BookChangingService {
         );
     }
 
-    destroyBook(id: string) {
-        this.http.get('/api/BooksGridAPI/Destroy/' + id).subscribe(result => {
+    destroyEntity(id: string, type: number) {
+        this.http.get('/api/MainGridAPI/Destroy/' + id + '/' + type).subscribe(result => {
             return  result.json();
         });
     }

@@ -37,9 +37,17 @@ namespace Atheneum.Controllers
 
         [HttpGet]
         [Route("Destroy/{id}")]
-        public void DestroyBook(string id)
+        public bool DestroyBook(string id)
         {
-            _bookService.DestroyBook(id);
+            try
+            {
+                _bookService.DestroyBook(id);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         [HttpPost]

@@ -29,7 +29,7 @@ namespace Atheneum.Controllers
         }
 
         [HttpGet]
-        [Route("Atheneum")]
+        [Route("Get")]
         public IEnumerable<BaseEntity> GetEntitys()
         {
             return _libraryService.GetLibrary();
@@ -44,16 +44,16 @@ namespace Atheneum.Controllers
 
         [HttpPost]
         [Route("Edit")]
-        public void EditBook([FromBody]Book book)
+        public void EditBook([FromBody]BaseEntity entity)
         {
-
+            _libraryService.UpdateLibrary(entity);
         }
 
         [HttpPost]
         [Route("Add")]
         public void AddBook([FromBody]Book book)
         {
-
+            //_libraryService.DestroyLibraryItem(id, entityLibraryType);
         }
 
         //[HttpGet]

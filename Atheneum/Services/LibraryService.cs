@@ -22,12 +22,12 @@ namespace Atheneum.Services
 
         public List<BaseEntity> GetLibrary()
         {
-            return _libraryRepository.GetEntitys();
+            return _libraryRepository.GetEntities();
         }
 
-        public void UpdateLibrary(string id, int entityLibraryType)
+        public void UpdateLibrary(BaseEntity entity)
         {
-            _libraryRepository.UpdateEntityChack(id, entityLibraryType);
+            _libraryRepository.UpdateEntityChack(entity);
         }
 
         public void DestroyLibraryItem(string id, int entityLibraryType)
