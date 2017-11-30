@@ -20,6 +20,7 @@ namespace Atheneum
             _configuration = ConfigBuilder.Build();
         }
 
+        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -31,48 +32,48 @@ namespace Atheneum
             services.AddMvc();
         }
 
-        //public void Configure(IApplicationBuilder app, IHostingEnvironment env, AtheneumDbInitializer seeder)
-        //{
-        //    if (env.IsDevelopment())
-        //    {
-        //        app.UseDeveloperExceptionPage();
-        //        app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
-        //        {
-        //            HotModuleReplacement = true
-        //        });
-        //    }
-        //    else
-        //    {
-        //        app.UseExceptionHandler("/Home/Error");
-        //    }
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, AtheneumDbInitializer seeder)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                {
+                    HotModuleReplacement = true
+                });
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
 
-        //    app.UseStaticFiles();
+            app.UseStaticFiles();
 
-        //    app.UseMvc(routes =>
-        //    {
-        //        routes.MapRoute(
-        //            name: "default",
-        //            template: "{controller=Home}/{action=Index}/{id?}");
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
 
-        //        routes.MapSpaFallbackRoute(
-        //            name: "spa-fallback",
-        //            defaults: new { controller = "Home", action = "Index" });
-        //    });
+                routes.MapSpaFallbackRoute(
+                    name: "spa-fallback",
+                    defaults: new { controller = "Home", action = "Index" });
+            });
 
-        //    app.Run(async (context) =>
-        //    {
-        //        await context.Response.WriteAsync(" Welcome to Dotnet Core !!");
-        //    });
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync(" Welcome to Dotnet Core !!");
+            });
 
-        //    try
-        //    {
-        //        seeder.Initialize();
-        //    }
-        //    catch (System.Exception ex)
-        //    {
+            try
+            {
+                seeder.SeedData().Wait();
+            }
+            catch (System.Exception ex)
+            {
 
-        //        throw ex;
-        //    }
-        //}
+                throw ex;
+            }
+        }
     }
 }

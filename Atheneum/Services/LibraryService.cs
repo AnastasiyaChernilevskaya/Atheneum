@@ -42,7 +42,7 @@ namespace Atheneum.Services
 
         public static byte[] SerializeToXml<T>(List<T> items)
         {
-            XmlSerializer ser = new XmlSerializer(items.GetType());
+            var ser = new XmlSerializer(items.GetType());
             string result = string.Empty;
 
             using (MemoryStream memStream = new MemoryStream())

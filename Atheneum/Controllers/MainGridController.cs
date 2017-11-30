@@ -14,8 +14,9 @@ namespace Atheneum.Controllers
     [Route("api/MainGridAPI")]
     public class MainGridAPI : Controller
     {
-        private LibraryService _libraryService;
         private readonly AtheneumContext _context;
+        private LibraryService _libraryService;
+
 
         public MainGridAPI(AtheneumContext context)
         {
@@ -40,6 +41,20 @@ namespace Atheneum.Controllers
         public void DestroyLibraryItem(string id, int entityLibraryType)
         {
             _libraryService.DestroyLibraryItem(id, entityLibraryType);
+        }
+
+        [HttpPost]
+        [Route("Edit")]
+        public void EditBook([FromBody]Book book)
+        {
+
+        }
+
+        [HttpPost]
+        [Route("Add")]
+        public void AddBook([FromBody]Book book)
+        {
+
         }
 
 
