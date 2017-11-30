@@ -7,6 +7,12 @@ import { Http } from "@angular/http";
 })
 export class BooksGridComponent {
 
+    public Books: Book[] = [];
+
+    constructor(public http: Http) {
+        this.getBooksData();
+    }
+
     private newAttribute: Book = {
         author: "",
         date: "",
@@ -28,10 +34,8 @@ export class BooksGridComponent {
             libraryType: 0,
             publisher: this.newAttribute.publisher
         }
-        var boo = {
-            Name: "tetstfjgi"
-        }
-        this.http.post('/api/BooksGridAPI/Add', { Name: "test" }).subscribe(result => {
+
+        this.http.post('/api/BooksGridAPI/Add', book ).subscribe(result => {
         });
         this.newAttribute = {
             author: "",
@@ -49,15 +53,9 @@ export class BooksGridComponent {
         this.destroyBook(id);
     }
 
-    public Books: Book[] = [];
-
-    constructor(public http: Http) {
-        this.getBooksData();
-    }
-
     getBooksData() {
 
-        this.http.get('/api/BooksGridAPI/Books').subscribe(result => {
+        this.http.get('/api/BooksGridAPI/Get').subscribe(result => {
             this.Books = result.json();
         });
     }
