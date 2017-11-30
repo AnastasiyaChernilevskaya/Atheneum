@@ -9,12 +9,23 @@ namespace Atheneum.DataAccess
 {
     public class AtheneumContext : DbContext
     {
-        public AtheneumContext(DbContextOptions<AtheneumContext> options) : base(options)
+        private IConfigurationRoot _configuration;
+
+        public AtheneumContext(IConfigurationRoot configuration, DbContextOptions options) : base(options)
         {
+            _configuration = configuration;
         }
+
         public DbSet<Book> Books { get; set; }
         public DbSet<Periodical> Periodicals { get; set; }
         public DbSet<Newspaper> Newspapers { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+
+            optionsBuilder.UseSqlServer(_configuration["ConnectionStrings:DefaultConnection"]);
+        }
 
     }
 }

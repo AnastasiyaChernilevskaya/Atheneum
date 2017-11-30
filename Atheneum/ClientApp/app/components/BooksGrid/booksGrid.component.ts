@@ -7,14 +7,44 @@ import { Http } from "@angular/http";
 })
 export class BooksGridComponent {
 
-    private newAttribute: any = {};
+    private newAttribute: Book = {
+        author: "",
+        date: "",
+        id: "",
+        includeToFile: false,
+        libraryType: 0,
+        name: "",
+        publisher: ""
+    };
 
     addFieldValue() {
-        this.Books.push(this.newAttribute)
-        this.newAttribute = {};
+        this.Books.push(this.newAttribute);
+        var book: Book = {
+            id: "",
+            author: this.newAttribute.author,
+            name: this.newAttribute.name,
+            date: new Date().toDateString(),
+            includeToFile: false,
+            libraryType: 0,
+            publisher: this.newAttribute.publisher
+        }
+        var boo = {
+            Name: "tetstfjgi"
+        }
+        this.http.post('/api/BooksGridAPI/Add', { Name: "test" }).subscribe(result => {
+        });
+        this.newAttribute = {
+            author: "",
+            date: "",
+            id: "",
+            includeToFile: false,
+            libraryType: 0,
+            name: "",
+            publisher: ""
+        };
     }
 
-    deleteBook(index: number, id: string) {
+    deleteFieldValue(index: number, id: string) {
         this.Books.splice(index, 1);
         this.destroyBook(id);
     }
@@ -38,13 +68,14 @@ export class BooksGridComponent {
         });
     }
 }
-enum LibraryType { Book = 0, Newspaper = 1, Periodical = 2, Other =3 };
+enum LibraryType { Book = 0, Newspaper = 1, Periodical = 2, Other = 3 };
 
 export interface Book {
-    ID: string;
-    IncludeToFile: boolean;
-    Name: string;
-    Publisher: string;
-    LibraryType: LibraryType;
-    Author: string;
+    id: string;
+    includeToFile: boolean;
+    name: string;
+    publisher: string;
+    libraryType: LibraryType;
+    author: string;
+    date: string;
 }

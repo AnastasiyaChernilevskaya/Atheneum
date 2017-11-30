@@ -19,7 +19,25 @@
 
   <ItemGroup>
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
+    <Compile Remove="Views\LibraryAdmin\**" />
+    <Compile Remove="Views\LibraryUser\**" />
+    <Compile Remove="Views\MyLibrary\**" />
     <Content Remove="ClientApp\**" />
+    <Content Remove="Views\LibraryAdmin\**" />
+    <Content Remove="Views\LibraryUser\**" />
+    <Content Remove="Views\MyLibrary\**" />
+    <EmbeddedResource Remove="Views\LibraryAdmin\**" />
+    <EmbeddedResource Remove="Views\LibraryUser\**" />
+    <EmbeddedResource Remove="Views\MyLibrary\**" />
+    <None Remove="Views\LibraryAdmin\**" />
+    <None Remove="Views\LibraryUser\**" />
+    <None Remove="Views\MyLibrary\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\app\components\BooksGrid\bookGrid.component.css" />
+    <None Remove="ClientApp\app\components\BooksGrid\booksGrid.component.spec.ts" />
+    <None Remove="ClientApp\app\components\MainGrid\mainGrid.component.spec.ts" />
   </ItemGroup>
 
   <ItemGroup>

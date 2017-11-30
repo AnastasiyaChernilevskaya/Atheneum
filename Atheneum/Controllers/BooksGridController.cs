@@ -5,29 +5,31 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Atheneum.DataAccess;
 using Atheneum.DataAccess.Models;
+using Atheneum.DataAccess.Repositories;
 using Atheneum.Services;
 
 namespace Atheneum.Controllers
 {
-[Produces("application/json")]
+    [Produces("application/json")]
     [Route("api/BooksGridAPI")]
     public class BooksGridAPI : Controller
     {
         private BookService _bookService;
-        private readonly AtheneumContext _context;
-
-        public BooksGridAPI(AtheneumContext context)
-        {
-            _context = context;
-            _bookService = new BookService(_context);
-        }
         public IActionResult Index()
         {
             return View();
         }
 
+        private readonly AtheneumContext _context;
+
+        public BooksGridAPI(AtheneumContext context)
+        {
+            _context = context;
+            _bookService = new BookService(context);
+        }
+
         [HttpGet]
-        [Route("Books")]
+        [Route("Get")]
         public IEnumerable<Book> GetBooks()
         {
             return _bookService.GetBooks();
@@ -40,12 +42,21 @@ namespace Atheneum.Controllers
             _bookService.DestroyBook(id);
         }
 
-        [HttpGet]
-        [Route("Edit/{book}")]
-        public void UpdateBook(Book book)
+        [HttpPost]
+        [Route("Edit")]
+        public void EditBook([FromBody]Book book)
         {
             _bookService.UpdateBook(book);
         }
+
+        [HttpPost]
+        [Route("Add")]
+        public void AddBook([FromBody]Book book)
+        {
+            _bookService.CreateBook(book);
+        }
+
+
 
         //[HttpGet]
         //[Route("Details/{id}")]

@@ -66,7 +66,7 @@ namespace Atheneum.DataAccess.Repositories
         }
 
         public void DestroyEntity(string id, int entityLibraryType)
-        {            
+        {
             if (entityLibraryType == (int)LibraryType.Book)
             {
                 var _repository = new BookRepository(_context);

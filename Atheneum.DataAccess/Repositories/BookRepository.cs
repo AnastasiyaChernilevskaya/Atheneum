@@ -10,8 +10,7 @@ namespace Atheneum.DataAccess.Repositories
 {
     public class BookRepository
     {
-        private readonly AtheneumContext _context;
-
+        private AtheneumContext _context;
         public BookRepository(AtheneumContext context)
         {
             _context = context;

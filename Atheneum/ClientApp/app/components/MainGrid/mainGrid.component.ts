@@ -15,10 +15,9 @@ export class MainGridComponent {
         this.newAttribute = {};
     }
 
-    deleteFieldValue(index: number, id: string, type: number) {
+    deleteFieldValue(index: number) {
         this.Atheneum.splice(index, 1);
-        //this.destroyAtheneumItem(id, type);
-    }  
+    }
 
     public Atheneum: Entity[] = [];
 
@@ -32,15 +31,15 @@ export class MainGridComponent {
         });
     }
 
-    //destroyAtheneumItem(id: string, type: number) {
-    //    this.http.get('/api/MainGridAPI/Destroy/' + id + '/' + type).subscribe(result => {
-    //        this.Atheneum = result.json();
-    //    });
-    //}
+    //addEntitysToArray() {
+    //    for (var item of this.Book) {
+    //        this.fieldArray.push(item)
+    //    }
+    //};
 
 
 }
-enum LibraryType { Book = 0, Newspaper = 1, Periodical = 2, Other =3 };
+enum LibraryType { Book = 0, Newspaper = 1, Periodical = 2, Other = 3 };
 
 export interface Entity {
     ID: string;
@@ -49,4 +48,5 @@ export interface Entity {
     Publisher: string;
     LibraryType: LibraryType;
     Author: string;
+    Date: string;
 }

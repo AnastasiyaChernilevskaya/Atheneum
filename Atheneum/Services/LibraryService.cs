@@ -52,7 +52,7 @@ namespace Atheneum.Services
                 memStream.Position = 0;
                 result = new StreamReader(memStream).ReadToEnd();
             }
-            
+
             var memoryStream = new MemoryStream();
             TextWriter textWriter = new StreamWriter(memoryStream);
             textWriter.WriteLine(result);
