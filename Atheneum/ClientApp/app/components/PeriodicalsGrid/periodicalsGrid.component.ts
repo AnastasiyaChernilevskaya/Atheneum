@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Http } from "@angular/http";
 
 import { Periodical } from '../domain/interface/libraryentitis';
-import { PeriodicalService } from '../services/periodicalservice';
 import { LibraryType } from "../Domain/Enums/LibraryType";
+import { PeriodicalService } from "../Services/periodicalService";
 
 @Component({
     selector: 'periodicalsGrid',
@@ -33,7 +33,7 @@ export class PeriodicalsGridComponent {
             id: "",
             name: this.newAttribute.name,
             includeToFile: this.newAttribute.includeToFile,
-            libraryType: 0,
+            libraryType: 2,
             publisher: this.newAttribute.publisher,
             isChanged: false
         }

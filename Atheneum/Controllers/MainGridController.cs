@@ -37,9 +37,9 @@ namespace Atheneum.Controllers
 
         [HttpGet]
         [Route("Destroy/{id}/{type}")]
-        public void DestroyLibraryItem(string id, int entityLibraryType)
+        public void DestroyLibraryItem(string id, int type)
         {
-            _libraryService.DestroyLibraryItem(id, entityLibraryType);
+            _libraryService.DestroyLibraryItem(id, type);
         }
 
         [HttpPost]
@@ -48,19 +48,5 @@ namespace Atheneum.Controllers
         {
             _libraryService.UpdateLibrary(entity);
         }
-
-        [HttpPost]
-        [Route("Add")]
-        public void AddBook([FromBody]Book book)
-        {
-            //_libraryService.DestroyLibraryItem(id, entityLibraryType);
-        }
-
-        //[HttpGet]
-        //[Route("Details/{id}")]
-        //public IEnumerable<StudentDetails> GetStudentDetails(int id)
-        //{
-        //    return _context.StudentDetails.Where(i => i.StdID == id).ToList();
-        //}
     }
 }

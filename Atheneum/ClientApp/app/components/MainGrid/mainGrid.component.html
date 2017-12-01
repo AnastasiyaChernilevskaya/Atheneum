@@ -29,7 +29,7 @@
                 <input [(ngModel)]="Entity.publisher" (ngModelChange)="Entity.isChanged = true;" class="form-control" type="text" value="{{Entity.publisher}}" />
             </td>
             <td>
-                <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)">Delete</button>
+                <button class="btn btn-default" type="button" (click)="deleteFieldValue(i , Entity.id)">Delete</button>
                 <button *ngIf="Entity.isChanged" class="btn btn-default" type="button" (click)="editFieldValue(Entity); Entity.isChanged = false;">Save</button>
             </td>
         </tr>

@@ -32,7 +32,8 @@ namespace Atheneum.Controllers
         [Route("Get")]
         public IEnumerable<Book> GetBooks()
         {
-            return _bookService.GetBooks();
+            var book = _bookService.GetBooks();
+            return book;
         }
 
         [HttpGet]
@@ -52,25 +53,33 @@ namespace Atheneum.Controllers
 
         [HttpPost]
         [Route("Edit")]
-        public void EditBook([FromBody]Book book)
+        public bool EditBook([FromBody]Book book)
         {
-            _bookService.UpdateBook(book);
+            try
+            {
+                _bookService.UpdateBook(book);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         [HttpPost]
         [Route("Add")]
-        public void AddBook([FromBody]Book book)
+        public bool AddBook([FromBody]Book book)
         {
-            _bookService.CreateBook(book);
+            try
+            {
+                _bookService.CreateBook(book);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
-
-
-        //[HttpGet]
-        //[Route("Details/{id}")]
-        //public IEnumerable<StudentDetails> GetStudentDetails(int id)
-        //{
-        //    return _context.StudentDetails.Where(i => i.StdID == id).ToList();
-        //}
     }
 }

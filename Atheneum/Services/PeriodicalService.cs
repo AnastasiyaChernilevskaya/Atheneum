@@ -18,7 +18,7 @@ namespace Atheneum.Services
             _periodicalRepository = new PeriodicalRepository(_context);
         }
 
-        public List<Periodical> GetPeriodicals()
+        public IList<Periodical> GetPeriodicals()
         {
             return _periodicalRepository.GetPeriodicals();
         }

@@ -32,7 +32,8 @@ namespace Atheneum.Controllers
         [Route("Get")]
         public IEnumerable<Newspaper> GetNewspapers()
         {
-            return _newspaperService.GetNewspapers();
+            var newspaper = _newspaperService.GetNewspapers();
+            return newspaper;
         }
 
         [HttpGet]
@@ -52,16 +53,32 @@ namespace Atheneum.Controllers
 
         [HttpPost]
         [Route("Edit")]
-        public void EditBook([FromBody]Newspaper newspaper)
+        public bool EditBook([FromBody]Newspaper newspaper)
         {
-            _newspaperService.UpdateNewspaper(newspaper);
+            try
+            {
+                _newspaperService.UpdateNewspaper(newspaper);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         [HttpPost]
         [Route("Add")]
-        public void AddBook([FromBody]Newspaper newspaper)
+        public bool AddBook([FromBody]Newspaper newspaper)
         {
-            _newspaperService.CreateNewspaper(newspaper);
+            try
+            {
+                _newspaperService.CreateNewspaper(newspaper);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

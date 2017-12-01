@@ -2,13 +2,12 @@ import { Component } from '@angular/core';
 import { Http } from "@angular/http";
 
 import { Periodical } from '../domain/interface/libraryentitis';
-import { NewspaperService } from '../services/newspaperService';
 import { LibraryType } from "../Domain/Enums/LibraryType";
+import { NewspaperService } from "../Services/newspaperService";
 
 @Component({
-    selector: 'newspaperGrid',
-    templateUrl: './newspapersGrid.component.html',
-
+    selector: 'newspapersGrid',
+    templateUrl: './newspapersGrid.component.html'
 })
 export class NewspapersGridComponent {
     public Newspapers: Periodical[] = [];
@@ -34,7 +33,7 @@ export class NewspapersGridComponent {
             id: "",
             name: this.newAttribute.name,
             includeToFile: this.newAttribute.includeToFile,
-            libraryType: 0,
+            libraryType: this.newAttribute.libraryType,
             publisher: this.newAttribute.publisher,
             isChanged: false
         }
@@ -43,7 +42,7 @@ export class NewspapersGridComponent {
         this.newAttribute = {
             id: "",
             includeToFile: false,
-            libraryType: 0,
+            libraryType: 1,
             name: "",
             publisher: "",
             isChanged: false

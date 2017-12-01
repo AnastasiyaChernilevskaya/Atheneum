@@ -17,7 +17,7 @@ namespace Atheneum.DataAccess.Repositories
             _context = context;
         }
 
-        public List<Newspaper> GetNewspapers()
+        public IList<Newspaper> GetNewspapers()
         {
             var result = new List<Newspaper>();
             result = _context.Newspapers.ToList();

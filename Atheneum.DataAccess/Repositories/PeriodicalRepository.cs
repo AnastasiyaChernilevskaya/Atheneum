@@ -17,7 +17,7 @@ namespace Atheneum.DataAccess.Repositories
             _context = context;
         }
 
-        public List<Periodical> GetPeriodicals()
+        public IList<Periodical> GetPeriodicals()
         {
             var result = new List<Periodical>();
             result = _context.Periodicals.ToList();

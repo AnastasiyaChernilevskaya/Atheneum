@@ -22,7 +22,7 @@ namespace Atheneum.Services
             _newspaperRepository = new NewspaperRepository(_context);
         }
 
-        public List<Newspaper> GetNewspapers()
+        public IList<Newspaper> GetNewspapers()
         {
             return _newspaperRepository.GetNewspapers();
         }

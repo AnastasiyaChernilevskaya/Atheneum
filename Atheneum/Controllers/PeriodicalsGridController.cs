@@ -31,8 +31,8 @@ namespace Atheneum.Controllers
         [HttpGet]
         [Route("Get")]
         public IEnumerable<Periodical> GetPeriodicals()
-        {
-            return _periodicalService.GetPeriodicals();
+        {var periodical = _periodicalService.GetPeriodicals();
+            return periodical;
         }
 
         [HttpGet]
@@ -52,16 +52,32 @@ namespace Atheneum.Controllers
 
         [HttpPost]
         [Route("Edit")]
-        public void EditPeriodical([FromBody]Periodical periodical)
+        public bool EditPeriodical([FromBody]Periodical periodical)
         {
-            _periodicalService.UpdatePeriodical(periodical);
+            try
+            {
+                _periodicalService.UpdatePeriodical(periodical);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         [HttpPost]
         [Route("Add")]
-        public void AddBook([FromBody]Periodical periodical)
+        public bool AddBook([FromBody]Periodical periodical)
         {
-            _periodicalService.CreatePeriodical(periodical);
+            try
+            {
+                _periodicalService.CreatePeriodical(periodical);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }        
     }
 }

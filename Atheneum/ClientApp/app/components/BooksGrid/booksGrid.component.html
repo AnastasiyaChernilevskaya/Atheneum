@@ -17,7 +17,7 @@
                 <input [(ngModel)]="Book.id" (ngModelChange)="Book.isChanged = true;" class="form-control" type="hidden" value = "{{Book.id}}" />
             </td>
             <td>
-                <input [(ngModel)]="Book.includeToFile" (ngModelChange)="Book.isChanged = true;" class="form-control" type="checkbox" value ="{{Book.includeToFile}}" />
+                <input [(ngModel)]="Book.includeToFile" style="width:20px; align-content:center" (ngModelChange)="Book.isChanged = true;" class="form-control" type="checkbox" value ="{{Book.includeToFile}}" />
             </td>
             <td>
                 <input [(ngModel)]="Book.author" (ngModelChange)="Book.isChanged = true;" class="form-control" type="text" value="{{Book.author}}" />
@@ -38,7 +38,7 @@
                 <input class="form-control" type="hidden" id="newAttributeId" [(ngModel)]="newAttribute.id" name="newAttributeId" />
             </td>
             <td>
-                <input class="form-control" checkbox" id="newAttributeIncludeToFile" [(ngModel)]="newAttribute.includeToFile" name="newAttributeIncludeToFile" />
+                <input class="form-control" style="width:20px; align-content:center" id="newAttributeIncludeToFile" [(ngModel)]="newAttribute.includeToFile" name="newAttributeIncludeToFile" />
             </td>
             <td>
                 <input class="form-control" type="text" id="newAttributeAuthor" [(ngModel)]="newAttribute.author" name="newAttributeAuthor" />
