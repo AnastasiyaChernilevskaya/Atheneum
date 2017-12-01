@@ -10,13 +10,13 @@ export class BookChangingService {
     }
 
     getBooksData() {
-        return this.http.get('/api/BooksGridAPI/Get')
+        return this.http.get('http://localhost:50209' +'/api/BooksGridAPI/Get')
         //    .subscribe(result => {
         //});
     }
 
     addBook(book: Book) {
-        this.http.post('/api/BooksGridAPI/Add/', book).subscribe(
+        this.http.post('http://localhost:50209' +'/api/BooksGridAPI/Add/', book).subscribe(
             res => {
                 console.log(res);
             },
@@ -27,7 +27,7 @@ export class BookChangingService {
     }
 
     editBook(book: Book) {
-        this.http.post('/api/BooksGridAPI/Edit/', book).subscribe(
+        this.http.post('http://localhost:50209' +'/api/BooksGridAPI/Edit/', book).subscribe(
             res => {
                 console.log(res);
             },
@@ -38,7 +38,7 @@ export class BookChangingService {
     }
 
     destroyBook(id: string) {
-        this.http.get('/api/BooksGridAPI/Destroy/' + id).subscribe(result => {
+        this.http.get('http://localhost:50209' +'/api/BooksGridAPI/Destroy/' + id).subscribe(result => {
             return  result.json();
         });
     }

@@ -42,7 +42,7 @@ import { NewspaperService } from "./components/Services/newspaperService";
             { path: 'booksGrid', component: BooksGridComponent },
             { path: 'newspapersGrid', component: NewspapersGridComponent },
             { path: 'periodicalsGrid', component: PeriodicalsGridComponent },
-            { path: '**', redirectTo: 'MainGrid' }
+            { path: '**', redirectTo: 'home', pathMatch: 'full' }
         ])
     ],
     providers: [BookChangingService, LibraryService, PeriodicalService, NewspaperService]

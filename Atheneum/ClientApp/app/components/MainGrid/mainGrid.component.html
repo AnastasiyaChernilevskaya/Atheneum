@@ -17,7 +17,7 @@
                 <input [(ngModel)]="Entity.id" (ngModelChange)="Entity.isChanged = true;" class="form-control" type="hidden" value="{{Entity.id}}" />
             </td>
             <td>
-                <input [(ngModel)]="Entity.includeToFile" (ngModelChange)="Entity.isChanged = true;" class="form-control" type="checkbox" value="{{Entity.includeToFile}}" />
+                <input [(ngModel)]="Entity.includeToFile" style="width:20px;"  (ngModelChange)="Entity.isChanged = true;" class="form-control" type="checkbox" value="{{Entity.includeToFile}}" />
             </td>
             <td>
                 <input [(ngModel)]="LibraryType[Entity.libraryType]" disabled class="form-control" type="text"  />

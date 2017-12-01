@@ -16,7 +16,7 @@
                 <input [(ngModel)]="Periodical.id" (ngModelChange)="Periodical.isChanged = true;" class="form-control" type="hidden" value="{{Periodical.id}}" />
             </td>
             <td>
-                <input [(ngModel)]="Periodical.includeToFile" (ngModelChange)="Periodical.isChanged = true;" class="form-control" type="checkbox" value="{{Periodical.includeToFile}}" />
+                <input [(ngModel)]="Periodical.includeToFile" style="width:20px;" (ngModelChange)="Periodical.isChanged = true;" class="form-control" type="checkbox" value="{{Periodical.includeToFile}}" />
             </td>
             <td>
                 <input [(ngModel)]="Periodical.name" (ngModelChange)="Periodical.isChanged = true;" class="form-control" type="text" value="{{Periodical.name}}" />
@@ -34,7 +34,7 @@
                 <input class="form-control" type="hidden" id="newAttributeId" [(ngModel)]="newAttribute.id" name="newAttributeId" />
             </td>
             <td>
-                <input class="form-control" type="checkbox" id="newAttributeIncludeToFile" [(ngModel)]="newAttribute.includeToFile" checked="checked" name="newAttributeIncludeToFile" />
+                <input class="form-control" type="checkbox" style="width:20px;"  id="newAttributeIncludeToFile" [(ngModel)]="newAttribute.includeToFile" checked="checked" name="newAttributeIncludeToFile" />
             </td>
             <td>
                 <input class="form-control" type="text" id="newAttributeName" [(ngModel)]="newAttribute.name" name="newAttributeName" />

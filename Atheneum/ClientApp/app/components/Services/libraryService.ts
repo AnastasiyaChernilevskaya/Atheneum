@@ -10,11 +10,11 @@ export class LibraryService {
     }
 
     getData() {
-        return this.http.get('/api/MainGridAPI/Get');
+        return this.http.get('http://localhost:50209' +'/api/MainGridAPI/Get');
     }
 
     addEntity(entity: Entity) {
-        this.http.post('/api/MainGridAPI/Add/', entity).subscribe(
+        this.http.post('http://localhost:50209' +'/api/MainGridAPI/Add/', entity).subscribe(
             res => {
                 console.log(res);
             },
@@ -25,7 +25,7 @@ export class LibraryService {
     }
 
     editEntity(entity: Entity) {
-        this.http.post('/api/MainGridAPI/Edit/', entity).subscribe(
+        this.http.post('http://localhost:50209' +'/api/MainGridAPI/Edit/', entity).subscribe(
             res => {
                 console.log(res);
             },
@@ -36,7 +36,7 @@ export class LibraryService {
     }
 
     destroyEntity(id: string, type: number) {
-        this.http.get('/api/MainGridAPI/Destroy/' + id + '/' + type).subscribe(result => {
+        this.http.get('http://localhost:50209' +'/api/MainGridAPI/Destroy/' + id + '/' + type).subscribe(result => {
             return  result.json();
         });
     }

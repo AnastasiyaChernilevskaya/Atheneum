@@ -37,16 +37,32 @@ namespace Atheneum.Controllers
 
         [HttpGet]
         [Route("Destroy/{id}/{type}")]
-        public void DestroyLibraryItem(string id, int type)
+        public bool DestroyLibraryItem(string id, int type)
         {
-            _libraryService.DestroyLibraryItem(id, type);
+            try
+            {
+                _libraryService.DestroyLibraryItem(id, type);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         [HttpPost]
         [Route("Edit")]
-        public void EditBook([FromBody]BaseEntity entity)
+        public bool EditBook([FromBody]BaseEntity entity)
         {
-            _libraryService.UpdateLibrary(entity);
+            try
+            {
+                _libraryService.UpdateLibrary(entity);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

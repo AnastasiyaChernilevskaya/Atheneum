@@ -12,11 +12,11 @@ export class NewspaperService {
     }
 
     getNewspapersData() {
-        return this.http.get('/api/NewspaperGridAPI/Get');
+        return this.http.get('http://localhost:50209' +'/api/NewspaperGridAPI/Get');
     }
 
     addNewspaper(newspaper: Periodical) {
-        this.http.post('/api/NewspaperGridAPI/Add/', newspaper).subscribe(
+        this.http.post('http://localhost:50209' +'/api/NewspaperGridAPI/Add/', newspaper).subscribe(
             res => {
                 console.log(res);
             },
@@ -27,7 +27,7 @@ export class NewspaperService {
     }
 
     editNewspaper(newspaper: Periodical) {
-        this.http.post('/api/NewspaperGridAPI/Edit/', newspaper).subscribe(
+        this.http.post('http://localhost:50209' +'/api/NewspaperGridAPI/Edit/', newspaper).subscribe(
             res => {
                 console.log(res);
             },
@@ -38,7 +38,7 @@ export class NewspaperService {
     }
 
     destroyNewspaper(id: string) {
-        this.http.get('/api/NewspaperGridAPI/Destroy/' + id).subscribe(result => {
+        this.http.get('http://localhost:50209' +'/api/NewspaperGridAPI/Destroy/' + id).subscribe(result => {
             return  result.json();
         });
     }

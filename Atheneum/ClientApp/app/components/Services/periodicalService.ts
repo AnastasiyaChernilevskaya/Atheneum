@@ -12,11 +12,11 @@ export class PeriodicalService {
     }
 
     getPeriodicalData() {
-        return this.http.get('/api/PeriodicalGridAPI/Get');
+        return this.http.get('http://localhost:50209' +'/api/PeriodicalGridAPI/Get');
     }
 
     addPeriodical(Periodical: Periodical) {
-        this.http.post('/api/PeriodicalGridAPI/Add/', Periodical).subscribe(
+        this.http.post('http://localhost:50209' +'/api/PeriodicalGridAPI/Add/', Periodical).subscribe(
             res => {
                 console.log(res);
             },
@@ -27,7 +27,7 @@ export class PeriodicalService {
     }
 
     editPeriodical(Periodical: Periodical) {
-        this.http.post('/api/PeriodicalGridAPI/Edit/', Periodical).subscribe(
+        this.http.post('http://localhost:50209' +'/api/PeriodicalGridAPI/Edit/', Periodical).subscribe(
             res => {
                 console.log(res);
             },
@@ -38,7 +38,7 @@ export class PeriodicalService {
     }
 
     destroyPeriodical(id: string) {
-        this.http.get('/api/PeriodicalGridAPI/Destroy/' + id ).subscribe(result => {
+        this.http.get('http://localhost:50209' +'/api/PeriodicalGridAPI/Destroy/' + id ).subscribe(result => {
             return  result.json();
         });
     }
