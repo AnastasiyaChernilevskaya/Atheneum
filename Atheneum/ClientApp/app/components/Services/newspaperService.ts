@@ -1,20 +1,22 @@
 ﻿import { Component, Injectable } from '@angular/core';
 import { Http } from "@angular/http";
-import { Entity } from '../domain/interface/libraryentitis';
+import { Periodical } from '../domain/interface/libraryentitis';
 import { LibraryType } from "../Domain/Enums/LibraryType";
+
 @Injectable()
 export class NewspaperService {
+
     LibraryType: LibraryType;
     constructor(public http: Http) {
 
     }
 
-    getData() {
-        return this.http.get('/api/MainGridAPI/Get');
+    getNewspapersData() {
+        return this.http.get('/api/NewspaperGridAPI/Get');
     }
 
-    addEntity(entity: Entity) {
-        this.http.post('/api/MainGridAPI/Add/', entity).subscribe(
+    addNewspaper(newspaper: Periodical) {
+        this.http.post('/api/NewspaperGridAPI/Add/', newspaper).subscribe(
             res => {
                 console.log(res);
             },
@@ -24,8 +26,8 @@ export class NewspaperService {
         );
     }
 
-    editEntity(entity: Entity) {
-        this.http.post('/api/MainGridAPI/Edit/', entity).subscribe(
+    editNewspaper(newspaper: Periodical) {
+        this.http.post('/api/NewspaperGridAPI/Edit/', newspaper).subscribe(
             res => {
                 console.log(res);
             },
@@ -35,8 +37,8 @@ export class NewspaperService {
         );
     }
 
-    destroyEntity(id: string, type: number) {
-        this.http.get('/api/MainGridAPI/Destroy/' + id + '/' + type).subscribe(result => {
+    destroyNewspaper(id: string) {
+        this.http.get('/api/NewspaperGridAPI/Destroy/' + id).subscribe(result => {
             return  result.json();
         });
     }

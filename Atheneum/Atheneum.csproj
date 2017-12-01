@@ -37,6 +37,7 @@
   <ItemGroup>
     <None Remove="ClientApp\app\components\BooksGrid\bookGrid.component.css" />
     <None Remove="ClientApp\app\components\BooksGrid\booksGrid.component.spec.ts" />
+    <None Remove="ClientApp\app\components\BooksGrid\newspapersGrid.component.html" />
     <None Remove="ClientApp\app\components\MainGrid\mainGrid.component.spec.ts" />
   </ItemGroup>
 

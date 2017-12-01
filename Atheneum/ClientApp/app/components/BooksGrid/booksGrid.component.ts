@@ -8,7 +8,6 @@ import { LibraryType } from "../Domain/Enums/LibraryType";
 @Component({
     selector: 'booksGrid',
     templateUrl: './booksGrid.component.html',
-    //providers: [BookChangingService]
 })
 export class BooksGridComponent {
     public Books: Book[] = [];
@@ -21,7 +20,6 @@ export class BooksGridComponent {
 
     private newAttribute: Book = {
         author: "",
-        //date: "",
         id: "",
         includeToFile: false,
         libraryType: 0,
@@ -36,8 +34,7 @@ export class BooksGridComponent {
             id: "",
             author: this.newAttribute.author,
             name: this.newAttribute.name,
-            //date: new Date().toDateString(),
-            includeToFile: false,
+            includeToFile: this.newAttribute.includeToFile,
             libraryType: 0,
             publisher: this.newAttribute.publisher,
             isChanged: false
@@ -46,7 +43,6 @@ export class BooksGridComponent {
 
         this.newAttribute = {
             author: "",
-            //date: "",
             id: "",
             includeToFile: false,
             libraryType: 0,

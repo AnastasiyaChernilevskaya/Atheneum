@@ -27,7 +27,7 @@ export class MainGridComponent {
     }
 
     deleteFieldValue(index: number, id: string) {
-        this.libraryService.destroyEntity(id, this.Atheneum[index].LibraryType);
+        this.libraryService.destroyEntity(id, this.Atheneum[index].libraryType);
         this.Atheneum.splice(index, 1);
     }
 

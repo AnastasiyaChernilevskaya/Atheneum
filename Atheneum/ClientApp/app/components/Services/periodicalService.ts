@@ -1,20 +1,22 @@
 ﻿import { Component, Injectable } from '@angular/core';
 import { Http } from "@angular/http";
-import { Entity } from '../domain/interface/libraryentitis';
+import { Periodical } from '../domain/interface/libraryentitis';
 import { LibraryType } from "../Domain/Enums/LibraryType";
+
 @Injectable()
 export class PeriodicalService {
+
     LibraryType: LibraryType;
     constructor(public http: Http) {
 
     }
 
-    getData() {
-        return this.http.get('/api/MainGridAPI/Get');
+    getPeriodicalData() {
+        return this.http.get('/api/PeriodicalGridAPI/Get');
     }
 
-    addEntity(entity: Entity) {
-        this.http.post('/api/MainGridAPI/Add/', entity).subscribe(
+    addPeriodical(Periodical: Periodical) {
+        this.http.post('/api/PeriodicalGridAPI/Add/', Periodical).subscribe(
             res => {
                 console.log(res);
             },
@@ -24,8 +26,8 @@ export class PeriodicalService {
         );
     }
 
-    editEntity(entity: Entity) {
-        this.http.post('/api/MainGridAPI/Edit/', entity).subscribe(
+    editPeriodical(Periodical: Periodical) {
+        this.http.post('/api/PeriodicalGridAPI/Edit/', Periodical).subscribe(
             res => {
                 console.log(res);
             },
@@ -35,10 +37,9 @@ export class PeriodicalService {
         );
     }
 
-    destroyEntity(id: string, type: number) {
-        this.http.get('/api/MainGridAPI/Destroy/' + id + '/' + type).subscribe(result => {
+    destroyPeriodical(id: string) {
+        this.http.get('/api/PeriodicalGridAPI/Destroy/' + id ).subscribe(result => {
             return  result.json();
         });
     }
-
 }

@@ -8,14 +8,22 @@ export interface Book {
     libraryType: LibraryType;
     author: string;
     isChanged: boolean;
-    //date: string;
 }
 
 export interface Entity {
-    ID: string;
-    IncludeToFile: boolean;
-    Name: string;
-    Publisher: string;
-    LibraryType: LibraryType;
+    id: string;
+    includeToFile: boolean;
+    name: string;
+    publisher: string;
+    libraryType: LibraryType;
+    isChanged: boolean;
+}
+
+export interface Periodical {
+    id: string;
+    includeToFile: boolean;
+    name: string;
+    publisher: string;
+    libraryType: LibraryType;
     isChanged: boolean;
 }
