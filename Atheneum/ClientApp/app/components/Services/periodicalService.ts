@@ -6,7 +6,7 @@ import { LibraryType } from "../Domain/Enums/LibraryType";
 @Injectable()
 export class PeriodicalService {
 
-    LibraryType: LibraryType;
+    libraryType: LibraryType;
     constructor(public http: Http) {
 
     }

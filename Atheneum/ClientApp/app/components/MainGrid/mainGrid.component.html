@@ -12,7 +12,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let Entity of Atheneum; let i = index">
+        <tr *ngFor="let Entity of atheneum; let i = index">
             <td class="hidden">
                 <input [(ngModel)]="Entity.id" (ngModelChange)="Entity.isChanged = true;" class="form-control" type="hidden" value="{{Entity.id}}" />
             </td>
@@ -20,7 +20,7 @@
                 <input [(ngModel)]="Entity.includeToFile" style="width:20px;"  (ngModelChange)="Entity.isChanged = true;" class="form-control" type="checkbox" value="{{Entity.includeToFile}}" />
             </td>
             <td>
-                <input [(ngModel)]="LibraryType[Entity.libraryType]" disabled class="form-control" type="text"  />
+                <input [(ngModel)]="libraryType[Entity.libraryType]" disabled class="form-control" type="text"  />
             </td>
             <td>
                 <input [(ngModel)]="Entity.name" (ngModelChange)="Entity.isChanged = true;" class="form-control" type="text" value="{{Entity.name}}" />

@@ -10,11 +10,11 @@ import { NewspaperService } from "../Services/newspaperService";
     templateUrl: './newspapersGrid.component.html'
 })
 export class NewspapersGridComponent {
-    public Newspapers: Periodical[] = [];
+    public newspapers: Periodical[] = [];
 
     constructor(public http: Http, public newspaperService: NewspaperService) {
         this.newspaperService.getNewspapersData().subscribe(result => {
-            this.Newspapers = result.json(); 
+            this.newspapers = result.json(); 
         });
     }
 
@@ -28,7 +28,7 @@ export class NewspapersGridComponent {
     };
 
     addFieldValue() {
-        this.Newspapers.push(this.newAttribute);
+        this.newspapers.push(this.newAttribute);
         var newspaper: Periodical = {
             id: "",
             name: this.newAttribute.name,
@@ -50,7 +50,7 @@ export class NewspapersGridComponent {
     }
 
     deleteFieldValue(index: number, id: string) {
-        this.Newspapers.splice(index, 1);
+        this.newspapers.splice(index, 1);
         this.newspaperService.destroyNewspaper(id);
     }
 

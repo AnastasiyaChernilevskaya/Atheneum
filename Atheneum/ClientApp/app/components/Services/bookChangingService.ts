@@ -4,15 +4,14 @@ import { Book } from '../domain/interface/libraryentitis';
 import { LibraryType } from "../Domain/Enums/LibraryType";
 @Injectable()
 export class BookChangingService {
-    LibraryType: LibraryType;
+    libraryType: LibraryType;
     constructor(public http: Http) {
 
     }
 
     getBooksData() {
         return this.http.get('http://localhost:50209' +'/api/BooksGridAPI/Get')
-        //    .subscribe(result => {
-        //});
+
     }
 
     addBook(book: Book) {

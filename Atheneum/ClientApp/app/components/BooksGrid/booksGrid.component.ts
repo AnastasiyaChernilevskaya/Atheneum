@@ -10,11 +10,11 @@ import { LibraryType } from "../Domain/Enums/LibraryType";
     templateUrl: './booksGrid.component.html',
 })
 export class BooksGridComponent {
-    public Books: Book[] = [];
+    public books: Book[] = [];
 
     constructor(public http: Http, public bookChangingService: BookChangingService) {
         this.bookChangingService.getBooksData().subscribe(result => {
-            this.Books = result.json(); 
+            this.books = result.json(); 
         });
     }
 
@@ -29,7 +29,7 @@ export class BooksGridComponent {
     };
 
     addFieldValue() {
-        this.Books.push(this.newAttribute);
+        this.books.push(this.newAttribute);
         var book: Book = {
             id: "",
             author: this.newAttribute.author,
@@ -53,7 +53,7 @@ export class BooksGridComponent {
     }
 
     deleteFieldValue(index: number, id: string) {
-        this.Books.splice(index, 1);
+        this.books.splice(index, 1);
         this.bookChangingService.destroyBook(id);
     }
 

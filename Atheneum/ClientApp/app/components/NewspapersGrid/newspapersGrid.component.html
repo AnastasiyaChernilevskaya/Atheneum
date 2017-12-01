@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let Periodical of Newspapers; let i = index">
+        <tr *ngFor="let Periodical of newspapers; let i = index">
             <td class="hidden">
                 <input [(ngModel)]="Periodical.id" (ngModelChange)="Periodical.isChanged = true;" class="form-control" type="hidden" value="{{Periodical.id}}" />
             </td>

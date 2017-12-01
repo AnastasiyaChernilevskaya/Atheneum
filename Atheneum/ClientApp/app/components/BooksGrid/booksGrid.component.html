@@ -12,7 +12,7 @@
         </tr>
     </thead>    
     <tbody>
-        <tr *ngFor="let Book of Books; let i = index">
+        <tr *ngFor="let Book of books; let i = index">
             <td class="hidden">
                 <input [(ngModel)]="Book.id" (ngModelChange)="Book.isChanged = true;" class="form-control" type="hidden" value = "{{Book.id}}" />
             </td>

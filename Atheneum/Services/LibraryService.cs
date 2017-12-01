@@ -42,10 +42,10 @@ namespace Atheneum.Services
 
         public static byte[] SerializeToXml<T>(List<T> items)
         {
-            XmlSerializer ser = new XmlSerializer(items.GetType());
+            var ser = new XmlSerializer(items.GetType());
             string result = string.Empty;
 
-            using (MemoryStream memStream = new MemoryStream())
+            using (var memStream = new MemoryStream())
             {
                 ser.Serialize(memStream, items);
 
@@ -54,10 +54,10 @@ namespace Atheneum.Services
             }
 
             var memoryStream = new MemoryStream();
-            TextWriter textWriter = new StreamWriter(memoryStream);
+            var textWriter = new StreamWriter(memoryStream);
             textWriter.WriteLine(result);
             textWriter.Flush();
-            byte[] bytesInStream = memoryStream.ToArray();
+            var bytesInStream = memoryStream.ToArray();
             memoryStream.Close();
             return bytesInStream;
         }

@@ -4,7 +4,7 @@ import { Entity } from '../domain/interface/libraryentitis';
 import { LibraryType } from "../Domain/Enums/LibraryType";
 @Injectable()
 export class LibraryService {
-    LibraryType: LibraryType;
+    libraryType: LibraryType;
     constructor(public http: Http) {
 
     }
